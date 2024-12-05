@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:network_caller/network_callelr/hive/hive.dart';
 import 'package:network_caller/network_callelr/service/service.dart';
 
-void main() {
+void main()async {
+ await Hive.initFlutter();
+  var box =await Hive.openBox('mybox');
   runApp(const MyApp());
 }
 
@@ -14,7 +18,7 @@ class MyApp extends StatelessWidget {
       title: 'Network Caller',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
-      home: const Homepage(),
+      home: const HiveData(),
     );
   }
 }
